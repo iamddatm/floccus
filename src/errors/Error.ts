@@ -537,3 +537,17 @@ export class UnexpectedServerFolder extends FloccusError {
     Object.setPrototypeOf(this, UnexpectedServerFolder.prototype)
   }
 }
+
+/**
+ * 本地浏览器不允许扩展写书签,所有写入(create/move/update/remove)都被拒绝,而同一个 id
+ * 用读取 API 却读得到。360极速浏览器X 现已知有这一缺陷(写入一律返回 "Bookmark id is invalid.",
+ * 读取与导出正常),重试、换 id、换父文件夹都无效,所以要单独报出来让用户知道真实原因,
+ * 而不是像普通失败那样说"无法创建某书签"。
+ */
+export class LocalBookmarkWritesUnsupportedError extends FloccusError {
+  public readonly code = 58
+  constructor() {
+    super(`E058: This browser does not allow extensions to write bookmarks`)
+    Object.setPrototypeOf(this, LocalBookmarkWritesUnsupportedError.prototype)
+  }
+}

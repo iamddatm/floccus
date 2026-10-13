@@ -158,6 +158,9 @@
   "Error054": {
     "message": "E054：无法获取 Dropbox 的模板"
   },
+  "Error058": {
+    "message": "E058：当前浏览器不允许扩展写书签，因此无法把其它浏览器的改动同步到本地（读取和上传仍然可用）。这是 360极速浏览器X 的已知缺陷：create / move / update / remove 一律返回 “Bookmark id is invalid.”，而读取正常。请在 Chrome、Edge 或 Firefox 中执行下载方向的同步。"
+  },
   "LabelWebdavurl": {
     "message": "WebDAV URL"
   },

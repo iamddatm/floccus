@@ -167,6 +167,9 @@
   "Error057": {
     "message": "E057: Unexpected server folder: `{0}`. Please check your server folder configuration."
   },
+  "Error058": {
+    "message": "E058: This browser does not allow extensions to write bookmarks, so changes from other browsers cannot be synced into it. Reading bookmarks and uploading them still works. This is a known defect of 360极速浏览器X: create, move, update and remove all fail with \"Bookmark id is invalid.\" while reading works. Please run the download side in Chrome, Edge or Firefox."
+  },
   "LabelWebdavurl": {
     "message": "WebDAV URL"
   },

@@ -17,6 +17,7 @@ import { isOAuthAccount } from './AccountAuthorization'
 import {
   ClientsideAdditionFailsafeError, ClientsideDeletionFailsafeError, FloccusError,
   InterruptedSyncError,
+  LocalBookmarkWritesUnsupportedError,
   LocalFolderNotFoundError,
   NetworkError,
   ServersideAdditionFailsafeError, ServersideDeletionFailsafeError, TransientError,
@@ -507,6 +508,9 @@ export default class Account {
         // Don't throw away cache and mappings over a folder that may well come
         // back -- and init() would only throw this same error again anyway.
         new LocalFolderNotFoundError().code,
+        // 浏览器不允许扩展写书签(360极速浏览器X):在这里重试也不会成功,但清空缓存和映射
+        // 只会让下一次同步从零配对,把已有的状态搞乱,所以保留继续点。
+        new LocalBookmarkWritesUnsupportedError().code,
         new ServersideAdditionFailsafeError(0).code,
         new ServersideDeletionFailsafeError(0).code,
         new ClientsideAdditionFailsafeError(0).code,
